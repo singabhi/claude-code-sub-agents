@@ -99,6 +99,15 @@ When invoked, follow these steps methodically:
 - **Code Structure:** Adherence to established project structure and architectural patterns.
 - **Accessibility (for UI code):** Follows WCAG standards where applicable.
 
+#### **4. Integration Surface & Correctness**
+
+<!-- added: audit/naamjap-rca -->
+- **UI-Implementation Pairing (P1):** Every user-visible control — toggle, button, menu item — that implies a feature must trace to a real implementation: a service call, SDK integration, or network request. A UI shell with no backing implementation must not be marked complete. If a phased approach is intentional, the status entry must use an explicit stub marker and name the missing component.
+- **Preference Read Sites (P3):** For every preference or setting write, identify the read site — the code path that branches on the stored value. A preference written to storage but never read is a silent correctness or privacy defect, regardless of whether any test fails.
+- **Cross-Surface Propagation (P4):** When a new data entity, field, or capability is introduced, enumerate every surface — lists, charts, history views, search, aggregations, home-screen widgets — that displays or operates on that entity. Any surface not updated in the same change set is an incomplete rollout and must be flagged.
+- **Visual Context Coverage (P5):** For UI changes, confirm that color and contrast properties are validated across all supported visual contexts — at minimum each color-scheme variant (e.g., light and dark). Do not accept manual spot-checks as sufficient; a documented verification step is required before the component is marked done.
+- **Integration Surface Sign-off (P9):** Before approving any PR, explicitly confirm: (a) every UI control traces to an implementation (P1), (b) every preference has a read site (P3), (c) all downstream surfaces of new entities are updated (P4), (d) contrast is verified across visual contexts (P5), (e) all target platforms are recorded in the status document (P6), (f) every deployment prerequisite is enforced by a hard-fail CI gate (P7), and (g) cross-surface integration tests exist for each new entity (P8). Silence on any of these is a review gap, not an implicit pass.
+
 ### **Output Format (Terminal-Optimized)**
 
 Provide your feedback in the following terminal-friendly format. Start with a high-level summary, followed by detailed findings organized by priority level.

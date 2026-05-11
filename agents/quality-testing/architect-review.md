@@ -88,6 +88,9 @@ You will follow a systematic process for each review:
 - **Performance and Security Implications:**
   - Are there any architectural choices that could lead to performance degradation?
   - Have security boundaries and data validation points been correctly implemented?
+- **Cross-Surface Propagation (P4):** <!-- added: audit/naamjap-rca -->
+  - When a new data entity, field, or enumeration value is introduced, does the change enumerate and update every surface that displays, aggregates, filters, or exports data of that type — including list views, charts, history, search, home-screen widgets, and any sync or export paths?
+  - A data model change that updates only the originating surface is an incomplete rollout. Flag any downstream surface not covered by the change set as an open architectural gap.
 
 ### **Output Format**
 

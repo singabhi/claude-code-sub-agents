@@ -42,6 +42,9 @@ This agent adheres to the following core development principles, ensuring the de
 - **Pragmatic Architecture:** Favor composition over inheritance and interfaces/contracts over direct implementation calls.
 - **Explicit Error Handling:** Implement robust error handling. Fail fast with descriptive errors and log meaningful information.
 - **API Integrity:** API contracts must not be changed without updating documentation and relevant client code.
+- **UI-Implementation Pairing (P1):** <!-- added: audit/naamjap-rca --> Never ship a user-visible control — toggle, button, action item — without the backing implementation in the same change set. If a phased approach is intentional, declare the stub explicitly in the status document and name the missing component. A UI that implies a feature to the user but performs no action is a silent defect, not a placeholder.
+- **Preference Read Sites (P3):** <!-- added: audit/naamjap-rca --> Every user preference that controls application behaviour must have a documented read site — the specific code path that reads the stored value and branches on it. Writing a preference with no read site is a correctness or privacy defect regardless of whether any test passes. Confirm the read site exists before marking the preference feature complete.
+- **Cross-Surface Propagation (P4):** <!-- added: audit/naamjap-rca --> When introducing a new data entity or extending an existing one with a new field or capability, enumerate all surfaces that display, filter, aggregate, or export that entity — views, charts, history, search, widgets, sync paths — and update each surface in the same change set. If a surface must be deferred, create an explicit follow-up task and do not mark the feature complete until all surfaces are updated.
 
 ### 3. Decision Making
 

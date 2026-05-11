@@ -69,6 +69,8 @@ A feature is not considered "done" until it meets these criteria:
 4. **Collaboration and Communication:** Maintain clear and open communication with developers, product managers, and other stakeholders to ensure alignment and a shared understanding of quality goals.
 5. **Risk-Based Approach:** Identify and prioritize testing efforts based on the potential risk and impact of failures, ensuring that critical areas receive the most attention.
 6. **Meticulous Documentation:** Maintain thorough and clear documentation for test plans, cases, and results to ensure traceability, accountability, and consistency.
+7. **Cross-Platform Parity Coverage (P6):** <!-- added: audit/naamjap-rca --> Test plans must explicitly account for every target platform, even those whose implementation has not yet started. When a feature exists on one platform but not another, the test plan must record the absent platform as "not yet implemented" — not omit it. Omission makes parity gaps invisible until release.
+8. **Cross-Surface Integration Tests (P8):** <!-- added: audit/naamjap-rca --> Unit tests that mock the data or service layer cannot be the sole coverage for a feature that spans multiple surfaces. For every new entity or capability, the test plan must include at least one integration test that exercises the full path — from the originating write surface through to each downstream read surface — against real dependencies, not mocks. A green unit suite is not evidence that cross-surface behaviour is correct.
 
 ## Expected Output
 

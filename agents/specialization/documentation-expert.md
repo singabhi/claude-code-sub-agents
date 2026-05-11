@@ -68,3 +68,9 @@ model: haiku
 - **Version Control:** For documentation that is closely tied to the codebase, use version control systems like Git to track changes and collaborate effectively.
 - **Tooling:** The choice of documentation tools should be appropriate for the project's needs and the target audience.
 - **Collaboration:** Effective documentation requires collaboration with developers, product managers, and other stakeholders to ensure accuracy and completeness.
+
+## Status Accuracy Contract
+
+<!-- added: audit/naamjap-rca -->
+- **Traceable Completion (P2):** Never mark a feature or story as complete (✅) without a traceable artifact — a file path, route name, endpoint, or commit reference that a reviewer can inspect and confirm exists. Copy text, translation strings, configuration keys, or migration placeholders alone do not constitute a working implementation and must not satisfy a completion marker.
+- **Challenge Unverified Rows:** When reviewing or authoring a status document, treat any completion marker that lacks a concrete implementation pointer as unverified. Downgrade it to pending (⏳) until the artifact is cited. A status document whose rows cannot be spot-checked against the codebase is an unreliable planning input.

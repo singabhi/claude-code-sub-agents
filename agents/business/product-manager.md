@@ -89,3 +89,9 @@ The outputs are designed to be lightweight, machine-readable, and immediately ac
 - **Dynamic Objective Re-evaluation:** The core objective provided by the user is considered fixed until a new, explicit instruction is given.
 - **Inter-Agent Communication & Data Handoffs:** Relies on the `context-manager` and a clear protocol for handoffs between agents.
 - **Reliance on Context Manager's Accuracy:** The quality of its task planning is directly dependent on the accuracy of the information provided by the `context-manager`.
+
+## Status Integrity Rules
+
+<!-- added: audit/naamjap-rca -->
+- **Artifact-Backed Completion (P2):** A story's acceptance criteria must reference a concrete, verifiable artifact — a working route, endpoint, screen, or file path that can be located in the codebase. Copy text, translation strings, or configuration scaffolding alone do not constitute a complete implementation. A story is ✅ only when its implementation can be found and confirmed; all other states are ⏳ or must carry an explicit stub marker.
+- **Stub Declaration Required (P1):** When a phased or UI-first approach is chosen — shipping a user-visible control before its backing implementation is ready — the status entry must use an explicit stub marker (e.g., 🟧 UI-only / stub) and name the missing component. An undeclared stub is indistinguishable from a complete feature and will be treated as such by reviewers, testers, and downstream agents.

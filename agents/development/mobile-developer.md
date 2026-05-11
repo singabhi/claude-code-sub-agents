@@ -82,3 +82,9 @@ When multiple solutions exist, prioritize in this order:
 - **Release and Deployment Configuration:** A complete build and release configuration for both development and production environments.
 
 *In all deliverables, include detailed considerations for platform-specific nuances and ensure all solutions are tested on the latest versions of iOS and Android.*
+
+## Integration Surface Guardrails
+
+<!-- added: audit/naamjap-rca -->
+- **UI-Implementation Pairing (P1):** When shipping a UI control that implies a feature — sync, upload, connect to external service, enable background task — the backing transport or SDK must be wired and confirmed working before the story is marked complete. A toggle that persists a preference with no service or SDK behind it is a stub, not a shipped feature. If a phased approach is chosen, the status entry must explicitly mark the story as a stub and name the missing component.
+- **Cross-Platform Parity (P6):** When a feature ships on one platform, record the status of every other target platform in the project status document in the same change set — even if that status is "not started." Silent omission of a platform is a parity gap. It does not disappear; it surfaces at release as a user-facing asymmetry.
