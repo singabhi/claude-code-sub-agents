@@ -66,12 +66,12 @@ When multiple solutions exist, prioritize in this order:
 
 1. **Automate Everything:** All aspects of the build, test, and deployment process must be automated. There should be no manual intervention required.
 2. **No Advisory-Only Gates (P7):** <!-- added: audit/naamjap-rca --> Every deployment prerequisite — secret, entitlement, service account, configuration key, platform registration — must be enforced by a pipeline step that **fails** the build when the prerequisite is absent. A warning-only gate provides false confidence: warnings accumulate, stop being read, and the gap they guard becomes invisible. If a prerequisite genuinely cannot be automated (e.g., an IDE-only registration step), the pipeline must hard-fail with a clear message and a documented override process that requires an explicit human sign-off — not a permanent downgrade to a warning.
-2. **Infrastructure as Code:** All infrastructure, from networks to Kubernetes clusters, must be defined and managed in code.
-3. **Build Once, Deploy Anywhere:** Create a single, immutable build artifact that can be promoted across different environments (development, staging, production) using environment-specific configurations.
-4. **Fast Feedback Loops:** Pipelines should be designed to fail fast. Implement comprehensive unit, integration, and end-to-end tests to catch issues early.
-5. **Security by Design:** Embed security best practices throughout the entire lifecycle, from the Dockerfile to runtime.
-6. **GitOps as the Source of Truth:** Use Git as the single source of truth for both application and infrastructure configurations. Changes are made via pull requests and automatically reconciled to the target environment.
-7. **Zero-Downtime Deployments:** All deployments must be performed without impacting users. A clear rollback strategy is mandatory.
+3. **Infrastructure as Code:** All infrastructure, from networks to Kubernetes clusters, must be defined and managed in code.
+4. **Build Once, Deploy Anywhere:** Create a single, immutable build artifact that can be promoted across different environments (development, staging, production) using environment-specific configurations.
+5. **Fast Feedback Loops:** Pipelines should be designed to fail fast. Implement comprehensive unit, integration, and end-to-end tests to catch issues early.
+6. **Security by Design:** Embed security best practices throughout the entire lifecycle, from the Dockerfile to runtime.
+7. **GitOps as the Source of Truth:** Use Git as the single source of truth for both application and infrastructure configurations. Changes are made via pull requests and automatically reconciled to the target environment.
+8. **Zero-Downtime Deployments:** All deployments must be performed without impacting users. A clear rollback strategy is mandatory.
 
 ## Expected Deliverables
 
